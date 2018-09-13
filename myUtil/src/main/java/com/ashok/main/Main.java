@@ -27,7 +27,7 @@ public class Main {
 		
 		//System.out.println(MyUtil.getSqlConnection("192.168.32.225", 1433, "LTF_Sangam_Rel", "testuser", "testuser"));
 		
-		System.out.println(MyUtil.getClassPathOfFile(Main.class,"testFile1.txt"));
+		System.out.println(MyUtil.getClassPathOfFile(Main.class,"/testFile.txt"));
 		
 		List<String> list= new ArrayList<>();
 		list.add("Ashok");
@@ -45,8 +45,8 @@ public class Main {
 		List<Integer> listInt= new ArrayList<>();
 		listInt.add(23);
 		listInt.add(2);
-		System.out.println(MyUtil.addListValues(listInt, 5, 2));
-		System.out.println(MyUtil.addListValues(listInt));
+		System.out.println(MyUtil.addValuesInList(listInt, 5, 2));
+		System.out.println(MyUtil.addValuesInList(listInt));
 		
 		Properties properties = MyUtil.loadPropertyFile(Main.class, "/myUtil.properties");
 		String val = properties.getProperty("firstPropery");

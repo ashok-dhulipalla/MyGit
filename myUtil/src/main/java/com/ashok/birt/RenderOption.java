@@ -1,4 +1,4 @@
-package com.ashok.util;
+package com.ashok.birt;
 
 public enum RenderOption {
 	html,

@@ -276,9 +276,9 @@ public class MyUtil {
 	 * @param list Add all values in the list
 	 * @return sum Sum of values in the list
 	 */
-	public static Integer addListValues(List<Integer> list)
+	public static Integer addValuesInList(List<Integer> list)
 	{
-		return addListValues(list, null, null);
+		return addValuesInList(list, null, null);
 	}
 	/**
 	 * 
@@ -293,7 +293,7 @@ public class MyUtil {
 	 * @param conditionValue
 	 * @return sum Sum of values
 	 */
-	public static Integer addListValues(List<Integer> list,Integer condition, Integer conditionValue)
+	public static Integer addValuesInList(List<Integer> list,Integer condition, Integer conditionValue)
 	{
 		Stream<Integer> stream = list.stream();
 		Stream<Integer> filter= null;

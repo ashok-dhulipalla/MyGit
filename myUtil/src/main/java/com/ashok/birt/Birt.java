@@ -1,4 +1,4 @@
-package com.ashok.util;
+package com.ashok.birt;
 
 import org.eclipse.birt.core.exception.BirtException;
 import org.eclipse.birt.core.framework.Platform;
