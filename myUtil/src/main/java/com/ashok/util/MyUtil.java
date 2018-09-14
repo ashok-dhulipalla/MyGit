@@ -1,6 +1,5 @@
 package com.ashok.util;
 
-import java.beans.PropertyEditorManager;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.stream.Stream;
 
@@ -26,6 +26,7 @@ import com.ashok.exception.MyUtilException;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -443,5 +444,17 @@ public class MyUtil {
 		}
 		properties.load(res);
 		return properties;
+	}
+	
+	public static Map<String,Object> pojoToMap(Object pojoObj)
+	{
+		ObjectMapper mapper= new ObjectMapper();
+		return mapper.convertValue(pojoObj, new TypeReference<Map<String, Object>>(){});
+	}
+	
+	public static <T> T mapToPojo(Map<String,Object> map,Class<T> pojoClass)
+	{
+		ObjectMapper mapper= new ObjectMapper();
+		return mapper.convertValue(map,pojoClass);
 	}
 }

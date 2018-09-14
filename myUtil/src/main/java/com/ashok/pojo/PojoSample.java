@@ -1,6 +1,7 @@
 package com.ashok.pojo;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,7 +9,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.ashok.util.MyUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 @XmlRootElement(name="rootElement")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 FIELD	All fields (public or private) should be serialized>
 PROPERTY	All properties (public or private) should be serialized>
 PUBLIC_MEMBER	Public fields and properties>*/
-public class SamplePojo {
+public class PojoSample {
 
 	String firstName;
 	String middleName;
@@ -63,23 +63,27 @@ public class SamplePojo {
 	}
 	public static void main(String[] args) throws JAXBException, IOException {
 		
-		Object obj= new SamplePojo();
+		Object obj= new PojoSample();
 		System.out.println(obj.getClass());
 		
-		SamplePojo pojo= new SamplePojo();
+		PojoSample pojo= new PojoSample();
 		pojo.setFirstName("Ashok");
 		pojo.setMiddleName("Kumar");
 		pojo.setLastName("Dhulipalla");
 		pojo.setGender("Male");
 		
 		String xml= MyUtil.pojoToxml(pojo);
-		System.out.println(xml);
-		SamplePojo pojo1= (SamplePojo) MyUtil.xmlToPojo(xml, SamplePojo.class);
-		System.out.println(pojo1.toString());
+		System.out.println("pojoToXml: "+xml);
+		PojoSample pojo1= (PojoSample) MyUtil.xmlToPojo(xml, PojoSample.class);
+		System.out.println("xmlToPojo: "+pojo1.toString());
 		
 		String json= MyUtil.pojoToJsonString(pojo);
-		System.out.println(json);
-		SamplePojo pojo2= (SamplePojo) MyUtil.jsonToPojo(json, pojo.getClass());
-		System.out.println(pojo2);
+		System.out.println("pojoToJson: "+json);
+		PojoSample pojo2= (PojoSample) MyUtil.jsonToPojo(json, pojo.getClass());
+		System.out.println("jsonToPojo: "+pojo2);
+		
+		Map<String, Object> map = MyUtil.pojoToMap(pojo);
+		System.out.println("pojoToMap: "+map.toString());
+		System.out.println("mapToPojo: "+MyUtil.mapToPojo(map, PojoSample.class));
 	}
 }
