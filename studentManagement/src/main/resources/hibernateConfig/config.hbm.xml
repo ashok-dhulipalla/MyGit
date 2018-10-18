@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="nice.school.model.tables.Config" table="Config">
+	
+		<id name="configKey" type="string" column="config_key">
+		</id>
+		<property name="configValue">
+			<column name="config_value" not-null="true"/>
+		</property>
+		<property name="dataType">
+			<column name="data_type" not-null="true"/>
+		</property>
+		<property name="createdOn" type="timestamp">
+			<column name="created_on" not-null="true"/>
+		</property>
+		<property name="createdBy">
+			<column name="created_by" not-null="true"/>
+		</property>
+		<property name="lastModifiedOn" type="timestamp">
+			<column name="last_modified_on" not-null="true"/>
+		</property>
+		
+	</class>
+	
+</hibernate-mapping>

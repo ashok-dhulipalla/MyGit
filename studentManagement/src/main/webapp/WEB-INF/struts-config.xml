@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+	
+	<form-bean name="SchoolForm" type="org.apache.struts.action.DynaActionForm">
+		<form-property name="message" type="java.lang.String" />
+	</form-bean>
+	
+	</form-beans>
+	
+	<global-exceptions></global-exceptions>
+	
+	<global-forwards>
+		<forward name="howdy" path="/myStart.do" />
+	</global-forwards>
+	
+	<action-mappings>
+	
+<!-- 		<action path="/student" type="nice.school.struts.action.SchoolAction" parameter="method" name="SchoolForm">
+			<forward name="success" path="/success.jsp"/>
+			<forward name="failure" path="/failure.jsp"/>
+		</action> -->
+		
+		<action path="/studentinsert" type="nice.school.struts.action.SchoolAction" name="SchoolForm" parameter="method">
+			<forward name="success" path="/index.jsp"/>
+			<forward name="failure" path="/failure.jsp"/>
+		</action>
+		
+	</action-mappings>
+	
+	<message-resources parameter="school"/>
+	
+</struts-config>
