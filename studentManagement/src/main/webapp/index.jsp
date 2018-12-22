@@ -27,6 +27,12 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
 	<div class="container">
+		<div class="text-success" id="successMsg" style="display: block; border:0">
+		<center>Student added successfully</center>
+		</div>
+		<div class="text-danger" id="errorMsg" style="display: block; border:0">
+		<center>Error:</center> 
+		</div>
 		<h2>Student Entry</h2>
 
 		<form method="Post">

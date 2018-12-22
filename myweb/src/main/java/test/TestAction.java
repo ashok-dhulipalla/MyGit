@@ -14,7 +14,7 @@ public class TestAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String success = request.getParameter("success");
-		
+		System.out.println("Test Action");
 		TestForm tform= (TestForm) form;
 		tform.setMessage("------------------------");
 		

@@ -15,7 +15,7 @@ public class TestDispatchAction extends DispatchAction{
 			HttpServletResponse response)
 	{
 		String success = request.getParameter("success");
-		
+		System.out.println("TestDispatch Action");
 		DynaActionForm tform= (DynaActionForm) form;
 		tform.set("message", "this is message");
 		
