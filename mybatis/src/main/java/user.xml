@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+
+	<resultMap id="result" type="User">
+		<result property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<result property="status" column="status" />
+		<result property="creation_date" column="date" />
+	</resultMap>
+
+	<insert id="insert" parameterType="User">
+
+		<!-- <selectKey order="BEFORE" keyProperty="id" resultType="int">
+			select last_insert_id() as id
+			select max(id)+1 from USERINFO as id
+		</selectKey> -->
+		INSERT INTO USERINFO (NAME,EMAIL,PASSWORD,STATUS,date) VALUES
+		(#{name}, #{email}, #{password},#{status}, #{creation_date});
+
+	</insert>
+
+	<select id="getAll" resultType="User">
+		SELECT * FROM USERINFO;
+	</select>
+
+	<select id="getById" parameterType="int" resultMap="result">
+		SELECT *
+		FROM USERINFO WHERE ID = #{id};
+	</select>
+
+	<select id="maxId" resultType="int">
+		SELECT max(id) from USERINFO;
+	</select>
+
+</mapper>

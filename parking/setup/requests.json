@@ -1,0 +1,65 @@
+{
+	"groupName":"First Group Name",
+	"officeAddress":"office address,near that building",
+	"contactPersonName":"Ashok Kumar D",
+	"contactNo":"9603680245"
+}
+
+{
+	"groupId":"1",
+	"businessName":"B Name",
+	"address":"address",
+	"location":"loc",
+	"startTime":"10:00:00",
+	"endTime":"23:00:00",
+	"contactPersonName":"Ashok Kumar D",
+	"contactNo":"9603680245",
+	"techSupportContactNo":"9603680245"
+}
+
+
+{
+	"groupId":"1",
+	"businessId":"2",
+	"serverMacAddress":"mac address test",
+	"serverName":"server name test",
+	"totalCapacity":"18",
+	"capacityFor2w":"6",
+	"capacityFor4w":"12",
+	"clientMacAddressList":"gd:45:78:23,gf:jk:ui"
+}
+
+{
+	"groupId":"1",
+	"businessId":"2",
+	"serverMacAddress":"mac address test",
+	"companyName":"Test Company",
+	"capacity2w":"6",
+	"capacity4w":"12",
+	"clientMacAddressList":"gd:45:78:23,gf:jk:ui"
+}
+
+
+
+{
+	"groupId":"1",
+	"businessId":"2",
+	"serverMacAddress":"mac address test",
+	"serverName":"Test Company",
+	"fullLicencePlate":"ASDFER1234",
+	"fourDigitLicencePlate":"1234",
+	"expiryDate":"12-02-2019",
+	"updationDate":"12-02-2019",
+	"vehicleType":"2w",
+	"companyName":"Test Company"
+}
+
+{
+	"fullLicencePlate":"ABCD1234",
+	"fourDigitLicencePlate":"1234",
+	"vehicleType":"2w",
+	"recordType":"pass",
+	"companyName":"A",
+	"entryImagePath":"path1",
+	"exitImagePath":"path2"
+}

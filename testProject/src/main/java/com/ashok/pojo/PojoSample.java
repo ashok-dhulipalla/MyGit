@@ -1,8 +1,6 @@
 package com.ashok.pojo;
 
 import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -12,9 +10,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.ashok.util.MyUtil;
-import com.sun.jersey.api.json.JSONConfiguration;
-import com.sun.jersey.api.json.JSONJAXBContext;
-import com.sun.jersey.api.json.JSONUnmarshaller;
 
 @XmlRootElement(name="rootElement")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -97,10 +92,10 @@ public class PojoSample {
 		System.out.println("mapToPojo: "+MyUtil.mapToPojo(map, PojoSample.class));
 		
 		
-		Class[] arr = { PojoSample.class };
+		/*Class[] arr = { PojoSample.class };
 		JSONJAXBContext jsonContext = new JSONJAXBContext(JSONConfiguration.natural().build(), arr);
 		JSONUnmarshaller unmarshaller = jsonContext.createJSONUnmarshaller();
 		PojoSample pojoTest= unmarshaller.unmarshalFromJSON(new StringReader("{\"firstName\":\"Ashok\",\"middleName\":\"Kumar\",\"lastName\":\"Dhulipalla\",\"gender\":\"Male\",\"age\":\"2.3\"}"), PojoSample.class);
-		System.out.println("jsonToPojoTest: "+pojoTest);
+		System.out.println("jsonToPojoTest: "+pojoTest);*/
 	}
 }

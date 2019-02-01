@@ -12,10 +12,16 @@ public class HibernateUtil {
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
 	private static SessionFactory buildSessionFactory() {
+		return buildSessionFactory(null);
+	}
+	
+	private static SessionFactory buildSessionFactory(String fileName) {
 		try {
+			if(fileName == null)
+				fileName= "hibernate.cfg.xml";
 			// Create the SessionFactory from hibernate.cfg.xml
 			Configuration configuration = new Configuration();
-			configuration= configuration.configure("/hibernateConfig/hibernate.cfg.xml");
+			configuration= configuration.configure(fileName);
 			System.out.println("hibernate config success");
 			return configuration.buildSessionFactory();
 		} catch (Throwable ex) {
