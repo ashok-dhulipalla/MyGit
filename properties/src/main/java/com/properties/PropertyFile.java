@@ -2,40 +2,49 @@ package com.properties;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import com.properties.exception.PropertiesFileException;
 
 
 public class PropertyFile {
 
 	private static Properties properties;
 
-	public static void loadProperties(String fileName) throws IOException
+	public static void loadProperties(String fileName) throws PropertiesFileException
 	{
 		InputStream inStream = PropertyFile.class.getClassLoader().getResourceAsStream(fileName);
 		loadProperties(inStream);
 	}
 	
-	public static void loadProperties(File file) throws IOException
+	public static void loadProperties(File file) throws PropertiesFileException
 	{
-		InputStream inStream= new FileInputStream(file);
+		InputStream inStream;
+		try {
+			inStream = new FileInputStream(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			throw new PropertiesFileException("Properties file not found");
+		}
 		loadProperties(inStream);
 	}
 	
-	public static void loadProperties(InputStream inStream) throws IOException
+	public static void loadProperties(InputStream inStream) throws PropertiesFileException
 	{
 		try {
 			if(properties == null)
 				properties= new Properties();
 			properties.load(inStream);
-		} catch (IOException e) {
-			throw new IOException("Error while loading properties");
+		} catch (Exception e) {
+			throw new PropertiesFileException("Error while loading properties");
 		}
 		System.out.println("properties loaded successfully");
 	}
 	
-	public static void loadProperties(Properties properties) throws IOException
+	public static void loadProperties(Properties properties)
 	{
 		if(PropertyFile.properties == null)
 			PropertyFile.properties= new Properties();

@@ -28,7 +28,8 @@ public class serviceUtil {
 			paramString.append(key+"="+params.get(key));
 		}
 		Integer cnt = Integer.valueOf(String.valueOf(params.get("count")));
-		Unirest.setTimeouts(0, 0);
+		//Unirest.setConcurrency(20, 5);
+		Unirest.setTimeouts(20000, 15000);
 		return Unirest.post(url)
 				.headers(headers)
 				.body(paramString.toString());

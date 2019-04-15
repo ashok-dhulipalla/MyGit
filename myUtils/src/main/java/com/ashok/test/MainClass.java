@@ -9,11 +9,51 @@ import java.util.concurrent.Future;
 
 import com.ashok.util.webservice.serviceUtil;
 import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class MainClass {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+		MainClass mainclass = new MainClass();
+//		mainclass.testUnirest();
+		mainclass.testUnirestZain();
+	}
+	
+	private void testUnirestZain() {
+		try {
+			List<Future<HttpResponse<String>>> lst = new ArrayList<>();
+			for(int i = 1; i <= 10;i++)
+			{
+				System.out.println("starting thread: "+i);
+				Map<String,String> headers= new HashMap<>();
+				headers.put("content-type", "application/x-www-form-urlencoded");
+				Map<String,Object> params= new HashMap<>();
+				params.put("count", i);
+				params.put("waitingTime", 10);
+				Future<HttpResponse<String>> res;
+	
+				res= serviceUtil.callAsyncServiceAsString("POST", "http://localhost:8080/tomcatTest/tomcatTestServlet", headers, params);
+				//System.out.println(res.get().getBody());
+				lst.add(res);
+				if(i % 5 == 0)
+					Thread.sleep(5000);
+				
+//				Unirest.shutdown();
+			}
+			for(Future<HttpResponse<String>> res1: lst)
+			{
+				new Thread(new ResponseFuture(res1)).start();
+			}
+			System.out.println("done");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	private void testUnirest() {
 
 		/*ExecutorService exs= Executors.newFixedThreadPool(21);
 		for(int i = 1; i <= 20;i++)
@@ -27,7 +67,7 @@ public class MainClass {
 		//Unirest.setDefaultHeader("content-type", "application/x-www-form-urlencoded");
 		try {
 			List<Future<HttpResponse<String>>> lst = new ArrayList<>();
-			for(int i = 1; i <= 247;i++)
+			for(int i = 1; i <= 500;i++)
 			{
 				System.out.println("starting thread: "+i);
 				Map<String,String> headers= new HashMap<>();
@@ -40,8 +80,8 @@ public class MainClass {
 				res= serviceUtil.callAsyncServiceAsString("POST", "http://localhost:8080/tomcatTest/tomcatTestServlet", headers, params);
 				//System.out.println(res.get().getBody());
 				lst.add(res);
-				/*if(i % 100 == 0)
-					Thread.sleep(5000);*/
+				if(i % 5 == 0)
+					Thread.sleep(1000);
 			}
 			for(Future<HttpResponse<String>> res1: lst)
 			{
@@ -55,11 +95,14 @@ public class MainClass {
 		} /* catch (ExecutionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/ /*catch (InterruptedException e) {
+		}*/ catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} */
+		} 
 	}
+	
+	
+	
 
 }
 class ResponseFuture implements Runnable

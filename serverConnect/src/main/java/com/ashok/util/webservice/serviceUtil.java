@@ -74,7 +74,7 @@ public class serviceUtil {
 	private static HttpRequest callGetService(String url, Map<String,String> headers, Map<String,Object> params)
 	{
 		Unirest.setTimeouts(0, 0);
-		return Unirest.get(url)
+		return Unirest.get(url).headers(headers)
 				.queryString(params);
 	}
 	

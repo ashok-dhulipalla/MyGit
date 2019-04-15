@@ -1,12 +1,11 @@
 package com.db;
 
-import java.io.IOException;
-import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.db.exception.Connectionexception;
 import com.properties.PropertyFile;
+import com.properties.exception.PropertiesFileException;
 
 public class DBConnection {
 	
@@ -31,9 +30,9 @@ public class DBConnection {
 				simpleConnection= new SimpleConnection(url, user, password, driverClass);
 			}
 			return simpleConnection.getConnection();
-		} catch (SQLException | ClassNotFoundException | IOException e) {
+		} catch (SQLException | ClassNotFoundException | PropertiesFileException e) {
 			e.printStackTrace();
-			throw new Connectionexception("Error while getting connection");
+			throw new Connectionexception("Error while getting connection: "+e.getMessage());
 		}
 	}
 }
