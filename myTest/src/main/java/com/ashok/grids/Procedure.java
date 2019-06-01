@@ -345,16 +345,24 @@ public class Procedure {
 				"Dealer";
 		masterId= 143;*/
 		
-		gridName="NegativeAreaGrid"; 
+		/*gridName="NegativeAreaGrid"; 
 		gridColumns="pin_code_code\n" + 
 				"pin_code";
 		masterColumns="pin_code_code\n" + 
 				"pin_code_name";
 		masterNames="Pincode\n" + 
 				"Pincode";
-		masterId= 144;
+		masterId= 144;*/
 		
-
+		gridName="BrokerLTVRestrictGrid"; 
+		gridColumns="broker_code\n" + 
+				"broker_name";
+		masterColumns="dsa_code\n" + 
+				"dsa_name";
+		masterNames="DSA\n" + 
+				"DSA";
+		masterId= 150;
+		
 		out = new BufferedWriter(new FileWriter("/home/ashok/My work/GRIDS/newGrids/"+"UPLOAD_"+gridName.toUpperCase()+"STG"+".sql"));
 		allout = new BufferedWriter(new FileWriter("/home/ashok/My work/GRIDS/newGrids/all/uploads.sql",true));
 		String procedure= getProcedure(gridName,gridColumns,masterColumns,masterNames);
