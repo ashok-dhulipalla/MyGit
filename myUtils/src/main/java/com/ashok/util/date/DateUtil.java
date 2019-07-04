@@ -1,4 +1,4 @@
-package ashok.dateUtil;
+package com.ashok.util.date;
 
 import java.sql.Timestamp;
 import java.text.ParseException;

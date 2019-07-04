@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -27,9 +28,8 @@ public class serviceUtil {
 				paramString.append("&");
 			paramString.append(key+"="+params.get(key));
 		}
-		Integer cnt = Integer.valueOf(String.valueOf(params.get("count")));
-		//Unirest.setConcurrency(20, 5);
-		Unirest.setTimeouts(20000, 15000);
+		//Integer cnt = Integer.valueOf(String.valueOf(params.get("count")));
+		Unirest.setTimeouts(0, 0);
 		return Unirest.post(url)
 				.headers(headers)
 				.body(paramString.toString());
@@ -37,7 +37,7 @@ public class serviceUtil {
 
 	}
 
-	public static HttpResponse<String> callSyncServiceAsString(String method, String url,Map<String,String> headers, Map<String,Object> params) throws UnirestException
+	public static HttpResponse<String> callSynServiceAsString(String method, String url,Map<String,String> headers, Map<String,Object> params) throws UnirestException
 	{
 		if(method.equalsIgnoreCase("POST"))
 			return callPostService(url, headers, params).asString();
@@ -45,7 +45,7 @@ public class serviceUtil {
 			return callGetService(url, headers, params).asString();
 	}
 	
-	public static HttpResponse<InputStream> callSyncServiceAsStream(String method, String url,Map<String,String> headers, Map<String,Object> params) throws UnirestException
+	public static HttpResponse<InputStream> callSynServiceAsStream(String method, String url,Map<String,String> headers, Map<String,Object> params) throws UnirestException
 	{
 		if(method.equalsIgnoreCase("POST"))
 			return callPostService(url, headers, params).asBinary();
@@ -53,7 +53,7 @@ public class serviceUtil {
 			return callGetService(url, headers, params).asBinary();
 	}
 	
-	public static Future<HttpResponse<String>> callAsyncServiceAsString(String method, String url,Map<String,String> headers, Map<String,Object> params) throws UnirestException
+	public static Future<HttpResponse<String>> callAsynServiceAsString(String method, String url,Map<String,String> headers, Map<String,Object> params) throws UnirestException
 	{
 		if(method.equalsIgnoreCase("POST"))
 		{
@@ -63,7 +63,7 @@ public class serviceUtil {
 			return callGetService(url, headers, params).asStringAsync();
 	}
 	
-	public static Future<HttpResponse<InputStream>> callAsyncServiceAsStream(String method, String url,Map<String,String> headers, Map<String,Object> params) throws UnirestException
+	public static Future<HttpResponse<InputStream>> callAsynServiceAsStream(String method, String url,Map<String,String> headers, Map<String,Object> params) throws UnirestException
 	{
 		if(method.equalsIgnoreCase("POST"))
 			return callPostService(url, headers, params).asBinaryAsync();
@@ -74,12 +74,12 @@ public class serviceUtil {
 	private static HttpRequest callGetService(String url, Map<String,String> headers, Map<String,Object> params)
 	{
 		Unirest.setTimeouts(0, 0);
-		return Unirest.get(url)
+		return Unirest.get(url).headers(headers)
 				.queryString(params);
 	}
 	
 	public static void main(String[] args) throws UnirestException, IOException {
-		HttpResponse<String> res = callSyncServiceAsString("GET", "http://unirest.io/java.html", null, null);
+		HttpResponse<String> res = callSynServiceAsString("GET", "http://unirest.io/java.html", null, null);
 		System.out.println(res.getBody());
 		
 		ExecutorService exs= Executors.newFixedThreadPool(4);
