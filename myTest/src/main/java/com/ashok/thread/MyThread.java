@@ -1,27 +1,30 @@
 package com.ashok.thread;
 
+import java.net.URL;
+import java.util.Date;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MyThread {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		/*		System.out.println("Join method test");
+		/*URL url= new URL("https://www.javatpoint.com/URL-class");
+		System.out.println(url.getAuthority());
+//		Runtime.getRuntime().exec("notepad");//will open a new notepad  
+		System.out.println(Runtime.getRuntime().availableProcessors());
+		Runtime r= Runtime.getRuntime();
+		r.addShutdownHook(new ShutdownHook());
 		Threading t1= new Threading();
 		Thread tt1= new Thread(t1, "nameOfThread");
 		System.out.println(new Date().getTime());
 		long startTime = new Date().getTime();
 		t1.start();
 		tt1.start();
-		t1.join();
-		tt1.join();
 		System.out.println((new Date().getTime())-startTime);*/
 
 		//countdownlatch test
-		/*		CountDownLatch countLatch= new CountDownLatch(2);
+				CountDownLatch countLatch= new CountDownLatch(2);
 		Thread t1= new CountDownLatchTest(countLatch);
 		t1.setName("Thread 1");
 		Thread t2= new CountDownLatchTest(countLatch);
@@ -31,11 +34,11 @@ public class MyThread {
 		t2.start();
 
 		countLatch.await();
-		System.out.println("Done");*/
+		System.out.println("Done");
 		//-----------------------------------------
 
 		//wait notify notifyAll test
-		Object obj= new Object();
+		/*Object obj= new Object();
 		Thread t1= new wiatNotifyNotifyAllTest1(obj);
 		Thread t2= new wiatNotifyNotifyAllTest2(obj);
 		System.out.println("start thread1");
@@ -43,7 +46,7 @@ public class MyThread {
 		System.out.println("sleep for 3 seconds");
 		Thread.sleep(3000);
 		System.out.println("start thread2");
-		t2.start();
+		t2.start();*/
 		//-------------------------
 		//----------callable test----------------
 /*		String word = "Ashok kumar dhulipalla";
@@ -63,13 +66,25 @@ public class MyThread {
         //-----------------------------------------------
 	}
 }
+class ShutdownHook extends Thread
+{
+
+	public void run() {
+		// TODO Auto-generated method stub
+			System.out.println("Shutting down JVM");
+			System.out.println("Done");
+			System.out.println(Thread.currentThread().getName());
+		}
+	
+}
+
 class ThreadpoolTest implements Runnable
 {
 
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(10000);
 			System.out.println(Thread.currentThread().getName());
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -165,6 +180,15 @@ class Threading extends Thread{
 	public void run()
 	{
 		for(int i= 0; i< 100000;i++)
+		{
+			try {
+				System.out.println("I am sleeping shoutdown the JVM");
+				Thread.sleep(20000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println(currentThread().getName());
+		}
 	}
 }

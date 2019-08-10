@@ -15,38 +15,23 @@ package com.ashok.sms;
  * limitations under the License.
  */
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-
-import com.jaunt.NotFound;
-import com.jaunt.ResponseException;
-import com.jaunt.UserAgent;
-import com.jaunt.component.Form;
-import sun.management.resources.agent;
-
 /**
  * Created by sachin on 9/4/16.
  */
 
-public class SMS160by2 {
+public class SMS160by2 {/*
 
     public static String Token;
     Form sms;
     UserAgent agent;
 
-    /**
+    *//**
      * Used to login at http://www.160by2.com bu using username and password
      * @param username
      * @param Password
      * @throws ResponseException
      * @throws NotFound
-     */
+     *//*
     public void login(String username,String Password) throws ResponseException, NotFound {
 
         agent=new UserAgent();
@@ -61,13 +46,13 @@ public class SMS160by2 {
         sms=agent.doc.getForm(0);
     }
 
-    /**
+    *//**
      * Used to send msg to specified phone number.
      * @param message
      * @param Phone_No
      * @throws NotFound
      * @throws ResponseException
-     */
+     *//*
     public void sendSMS(String message,String Phone_No) throws NotFound, ResponseException {
 
         sms.setTextField(sms.getElement().findFirst("<input type=\"text\" placeholder=\"Enter Mobile Number or Name\"").getAt("name"),Phone_No);
@@ -99,13 +84,13 @@ public class SMS160by2 {
     		{
 //    			Thread.sleep(150000);
     			String msg;
-/*    			if(count%3 == 0)
+    			if(count%3 == 0)
     				msg="https://youtu.be/jXtZ0cgDit4";
     			else if(count%2 == 0)
     				msg="Go to Link https://youtu.be/jXtZ0cgDit4 and subscribe";
     			else
     				msg="Subscribe my channel https://youtu.be/jXtZ0cgDit4";
-    			count++;*/
+    			count++;
     			String number= line.split(",")[1];
     			//String number= "9182186636";
     			System.out.println(line.split(",")[1]);
@@ -123,4 +108,4 @@ public class SMS160by2 {
     	}
     }
 
-}
+*/}

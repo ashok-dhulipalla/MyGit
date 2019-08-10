@@ -1,10 +1,15 @@
 package com.ashok.util.convert;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
+import java.util.Base64;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
@@ -21,6 +26,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConvertUtil {
 
+	public static void main(String[] args) {
+		
+	}
 	/**
 	 * @param pojo
 	 * @return xml String
@@ -132,5 +140,38 @@ public class ConvertUtil {
 		ObjectMapper mapper= new ObjectMapper();
 		return mapper.convertValue(map,pojoClass);
 	}
+	
+	public static String fileToString(File file) throws IOException
+	{
+		byte[] fileInBytes= new byte[(int)file.length()];
+		InputStream is= new FileInputStream(file);
+		is.read(fileInBytes);
+		is.close();
 
+		String content= new String(fileInBytes);
+		return content;
+	}
+
+	public static String inputStreamToString(InputStream inputStream) throws IOException
+	{
+		ByteArrayOutputStream os = new ByteArrayOutputStream(); 
+	    byte[] buffer = new byte[0xFFFF];
+	    for (int len = inputStream.read(buffer); len != -1; len = inputStream.read(buffer)) { 
+	        os.write(buffer, 0, len);
+	    }
+
+		String content= new String(os.toByteArray());
+		return content;
+	}
+	
+	public static String bytesToBase64EncodeString(byte[] imageBytes) {
+		
+		return Base64.getEncoder().encodeToString(imageBytes);
+		
+	}
+
+	public static byte[] encodedStringToBytes(String imageString) {
+		
+		return Base64.getDecoder().decode(imageString);
+	}
 }

@@ -154,7 +154,7 @@ public class Main {
 		crc321.update(str.getBytes());
 		System.out.println(crc321.getValue());*/
 		
-		birtReport();
+		//birtReport();
 		
 	}
 	public static Calendar getDateIPToCalendar(String ipFormatDate) throws Exception {
