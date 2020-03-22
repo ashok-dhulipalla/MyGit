@@ -1,4 +1,4 @@
-package com.ashok.javaIO;
+package com.ashok;
 
 import java.io.BufferedReader;
 import java.io.IOException;
