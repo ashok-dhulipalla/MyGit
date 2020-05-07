@@ -1,5 +1,6 @@
 package com.ashok.main;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -97,6 +98,10 @@ public class Main {
 
 	}*/
 	public static void main(String[] args) throws Exception {
+		
+		File file= new File("C:\\gitrepos\\petroApps\\isdDist\\sc\\base\\tpz32\\topaz\\config\\private_system.prop");
+		if(file.exists())
+			System.out.println("file exists");
 		/*		Class.forName("org.postgresql.Driver");
 		Connection connection=DriverManager.getConnection("jdbc:postgresql://172.18.0.200:5434/WLH_Dev","wlh_bre","wlh_bre");
 		insert(connection,"1995:05:02:24:12:12",12);

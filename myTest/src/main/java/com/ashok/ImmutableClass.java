@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+import org.apache.batik.dom.util.HashTable;
+
 public class ImmutableClass {
 
 	public static void main(String[] args) {
@@ -23,24 +25,27 @@ public class ImmutableClass {
 //		System.out.println(employee);
 		
 		
+		Address add1= null;
+//		Map<Address,Integer> mapAdd= new HashMap<Address, Integer>();
+//		
+		add1= new Address("Bangalore", "Karnataka");
+//		
+//		mapAdd.put(add1, 11);
+//		add1.setCity("Hyderabad");
+//		add1.setCity("Bangalore");
+//		
+//		System.out.println(mapAdd.get(add1));
 		
-		
-		
-		
-		Map<Address,Integer> mapAdd= new HashMap<Address, Integer>();
-		
-		Address add1= new Address("Bangalore", "Karnataka");
-		
-		mapAdd.put(add1, 11);
-		add1.setCity("Hyderabad");
-		
-		System.out.println(mapAdd.get(add1));
-		
-//		HashSet<String> set1= new HashSet<String>();
-//		boolean b1= set1.add("java");
-//		boolean b2= set1.add("C");
-//		boolean b3= set1.add("java");
-//		System.out.format("%b %b %b",b1,b2,b3);
+//		Map<Employee,Integer> mapEmp= new HashMap<Employee, Integer>();
+//		Employee emp= new Employee(23, "ram", add1);
+//		
+//		mapEmp.put(emp,23);
+//		System.out.println(mapEmp.get(emp));
+		HashSet<String> set1= new HashSet<String>();
+		boolean b1= set1.add("java");
+		boolean b2= set1.add("C");
+		boolean b3= set1.add("java");
+		System.out.format("%b %b %b",b1,b2,b3);
 		
 		
 		
