@@ -77,7 +77,7 @@ public class DBUtil {
 	 */
 	public static Connection getPsqlLocalConnection() throws SQLException, ClassNotFoundException
 	{
-		return getPsqlConnection("localhost", 5432, "postgres","ashok","9603689505");
+		return getPsqlConnection("localhost", 5432, "postgres","postgres","postgres");
 	}
 	public static Connection getDerbyConnection(String databaseName) throws SQLException
 	{
@@ -86,4 +86,7 @@ public class DBUtil {
 		return DriverManager.getConnection(url);
 	}
 
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		System.out.println(getPsqlLocalConnection());
+	}
 }
