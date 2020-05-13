@@ -1,31 +1,24 @@
 package com.example.retrofitdemojava;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Post {
-
-    @SerializedName("userId")
-    int userId;
-    @SerializedName("id")
-    int id;
-    @SerializedName("title")
+    Integer userId;
+    Integer id;
     String title;
-    @SerializedName("body")
     String body;
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
