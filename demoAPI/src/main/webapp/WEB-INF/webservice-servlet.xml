@@ -11,5 +11,5 @@
 		http://www.springframework.org/schema/task		http://www.springframework.org/schema/task/spring-task-4.1.xsd" >
 
 	<!-- Component Beans Scanning -->
-	<context:component-scan base-package="blankAPI" />
+	<context:component-scan base-package="demoAPI" />
 </beans>

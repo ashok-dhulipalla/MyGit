@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Retrofit retrofit= new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
+                //.baseUrl("https://jsonplaceholder.typicode.com/")
+                .baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         APIInterface service = retrofit.create(APIInterface.class);
@@ -71,6 +72,21 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        service.getComments(1).enqueue(commentsCallBack);
+        //service.getComments(1).enqueue(commentsCallBack);
+
+
+        Callback<Post> postCallback= new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                System.out.println("SkillSetGo: "+response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                t.printStackTrace();
+            }
+        };
+
+        service.postReqDemo().enqueue(postCallback);
     }
 }

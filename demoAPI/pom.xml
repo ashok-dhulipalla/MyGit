@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>api</groupId>
-	<artifactId>blankApi</artifactId>
+	<artifactId>demoAPI</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
 	<name>blankAPI Maven Webapp</name>
@@ -59,7 +59,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>blankAPI</finalName>
+		<finalName>demoAPI</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
