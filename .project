@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>KotlinTutorial</name>
-	<comment>Kotlin</comment>
+	<name>KotlinDemo</name>
+	<comment>KotlinDemo</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -15,14 +15,8 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.jetbrains.kotlin.core.kotlinNature</nature>
 	</natures>
@@ -30,7 +24,7 @@
 		<link>
 			<name>kotlin_bin</name>
 			<type>2</type>
-			<locationURI>org.jetbrains.kotlin.core.filesystem:/Kotlin/kotlin_bin</locationURI>
+			<locationURI>org.jetbrains.kotlin.core.filesystem:/KotlinDemo/kotlin_bin</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
